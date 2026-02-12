@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trajetória – Dr. Antônio Cobucci</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .timeline {
+            margin-top: 3rem;
+        }
+        .timeline-item {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: var(--cinza);
+            border-radius: 16px;
+            border-left: 8px solid var(--vermelho);
+        }
+        .timeline-ano {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--azul);
+            min-width: 120px;
+        }
+        @media (max-width: 600px) {
+            .timeline-item {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div>
+                    <div class="logo">Dr. Antônio <span>Cobucci</span></div>
+                    <div class="crm-badge" id="crm-info"></div>
+                </div>
+                <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="sobre.html">Trajetória</a></li>
+                    <li><a href="servicos.html">Serviços</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section>
+        <div class="container">
+            <h1 class="section-title">Mais de 38 anos de história</h1>
+            <p style="font-size: 1.2rem; margin-bottom: 2rem;">Uma trajetória construída com dedicação, conhecimento e respeito ao paciente.</p>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-ano">1987</div>
+                    <div>
+                        <h3 style="color: var(--azul);">Início da jornada</h3>
+                        <p>Formação em Medicina e início do atendimento a pacientes no Rio de Janeiro.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-ano">1995</div>
+                    <div>
+                        <h3 style="color: var(--azul);">Pós-graduação em Cardiologia</h3>
+                        <p>Especialização e dedicação exclusiva à saúde do coração.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-ano">2000</div>
+                    <div>
+                        <h3 style="color: var(--azul);">Hospital Cardoso Fontes</h3>
+                        <p>Atuação em um dos maiores hospitais de referência do Rio.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-ano">2010</div>
+                    <div>
+                        <h3 style="color: var(--azul);">Hospital Miguel Couto</h3>
+                        <p>Passagem e contribuição na cardiologia do Miguel Couto.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-ano">2025</div>
+                    <div>
+                        <h3 style="color: var(--azul);">Atualmente</h3>
+                        <p>Cardios Clínica de Cardiologia – Itanhagá, atendendo com a mesma dedicação de sempre.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="background: var(--azul); color: white; padding: 2rem; border-radius: 16px; margin-top: 2rem;">
+                <h3 style="color: white; font-size: 1.8rem;">Milhares de pacientes atendidos</h3>
+                <p style="font-size: 1.1rem; margin-top: 1rem;">"Atender bem e cuidar de cada paciente como único – esse é meu compromisso há quase quatro décadas."</p>
+                <p style="margin-top: 1rem; font-weight: 600;" id="assinatura"></p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p style="font-size: 1.2rem; font-weight: 600;" id="footer-nome"></p>
+            <p id="footer-crm"></p>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/" class="whatsapp-float" id="whatsapp-float-link" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="config.js"></script>
+    <script>
+        document.getElementById('crm-info').innerHTML = `${config.nome} • ${config.crm} • ${config.rqe} • ${config.especialidade}`;
+        document.getElementById('assinatura').innerHTML = `— ${config.nome}`;
+        document.getElementById('footer-nome').innerHTML = config.nome;
+        document.getElementById('footer-crm').innerHTML = `${config.crm} • ${config.rqe}`;
+        document.getElementById('whatsapp-float-link').href = `https://wa.me/${config.whatsapp_link}`;
+        
+        document.querySelector('.menu-toggle')?.addEventListener('click', function() {
+            document.querySelector('nav').classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

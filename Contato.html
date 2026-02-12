@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato – Dr. Antônio Cobucci</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div>
+                    <div class="logo">Dr. Antônio <span>Cobucci</span></div>
+                    <div class="crm-badge" id="crm-info"></div>
+                </div>
+                <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="sobre.html">Trajetória</a></li>
+                    <li><a href="servicos.html">Serviços</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section>
+        <div class="container">
+            <h1 class="section-title">Cardios Clínica de Cardiologia</h1>
+            
+            <div style="display: flex; flex-wrap: wrap; gap: 2rem; margin-bottom: 3rem;">
+                <div style="flex: 1 1 300px;">
+                    <h3 style="color: var(--azul); font-size: 1.8rem; margin-bottom: 1.5rem;">Atendimento presencial</h3>
+                    
+                    <p style="font-size: 1.2rem; font-weight: 600; margin-bottom: 0.5rem;">
+                        <i class="fas fa-map-pin" style="color: var(--vermelho);"></i> 
+                        <span id="endereco-contato"></span>
+                    </p>
+                    <p style="margin-bottom: 1rem;" id="complemento-contato"></p>
+                    
+                    <p style="margin-bottom: 0.5rem;">
+                        <i class="fas fa-phone-alt"></i> 
+                        WhatsApp: <strong id="telefone-contato"></strong>
+                    </p>
+                    <p style="margin-bottom: 1.5rem;">
+                        <i class="fas fa-envelope"></i> 
+                        <span id="email-contato"></span>
+                    </p>
+                    
+                    <div style="background: var(--azul); color: white; padding: 1.5rem; border-radius: 16px; margin-bottom: 1.5rem;">
+                        <i class="fas fa-clock"></i> 
+                        <span style="font-size: 1.2rem; font-weight: 600;" id="horario-contato"></span>
+                    </div>
+                    
+                    <a href="https://wa.me/" class="btn" id="btn-whatsapp-contato" style="width: 100%; text-align: center;" target="_blank">
+                        <i class="fab fa-whatsapp"></i> Agendar horário
+                    </a>
+                </div>
+                
+                <div style="flex: 1 1 400px;">
+                    <div style="background: #f0f0f0; border-radius: 16px; overflow: hidden; border: 4px solid var(--azul); height: 350px;">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3674.115148890475!2d-43.31223468503226!3d-22.94655038499454!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9bd98d1c12b1bb%3A0x6b4f1e5b2f3e2c0!2sEstrada%20do%20Itanhag%C3%A1%2C%20483%20-%20Itanhanga%2C%20Rio%20de%20Janeiro%20-%20RJ%2C%2022753-319!5e0!3m2!1spt-BR!2sbr!4v1689876543210!5m2!1spt-BR!2sbr" 
+                            width="100%" 
+                            height="100%" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                    <p style="margin-top: 0.8rem; text-align: center;">
+                        <i class="fas fa-wheelchair"></i> Acesso facilitado • Estacionamento no local
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p style="font-size: 1.2rem; font-weight: 600;" id="footer-nome"></p>
+            <p id="footer-crm"></p>
+            <p style="margin-top: 1rem;">CRM 34.720/4 • RQE 37564 • Cardiologia</p>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/" class="whatsapp-float" id="whatsapp-float-link" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="config.js"></script>
+    <script>
+        document.getElementById('crm-info').innerHTML = `${config.nome} • ${config.crm} • ${config.rqe} • ${config.especialidade}`;
+        
+        document.getElementById('endereco-contato').innerHTML = config.endereco;
+        document.getElementById('complemento-contato').innerHTML = `${config.complemento} • ${config.cidade} • CEP ${config.cep}`;
+        document.getElementById('telefone-contato').innerHTML = config.whatsapp;
+        document.getElementById('email-contato').innerHTML = config.email;
+        document.getElementById('horario-contato').innerHTML = config.horario;
+        
+        document.getElementById('btn-whatsapp-contato').href = `https://wa.me/${config.whatsapp_link}`;
+        document.getElementById('whatsapp-float-link').href = `https://wa.me/${config.whatsapp_link}`;
+        
+        document.getElementById('footer-nome').innerHTML = config.nome;
+        document.getElementById('footer-crm').innerHTML = `${config.crm} • ${config.rqe}`;
+        
+        document.querySelector('.menu-toggle')?.addEventListener('click', function() {
+            document.querySelector('nav').classList.toggle('active');
+        });
+    </script>
+</body>
+</html>
