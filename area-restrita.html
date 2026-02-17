@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Área Restrita - Dr. Cobucci</title>
+    <link rel="stylesheet" href="estilo.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/css/bootstrap.min.css">
+    <!-- Widget de identidade (obrigatório) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/netlify-identity-widget@1.9.2/build/netlify-identity-widget.css" />
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <strong>Dr. Antônio <span style="color: #CF142B;">Cobucci</span></strong>
+            </a>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Início</a></li>
+                    <li class="nav-item"><a class="nav-link" href="sobre.html">Sobre</a></li>
+                    <li class="nav-item"><a class="nav-link" href="servicos.html">Serviços</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contato.html">Contato</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="area-restrita.html">Área Restrita</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container my-5">
+        <h1 class="text-center mb-4" style="color: #012169;">Área do Médico</h1>
+
+        <!-- Botão de login (aparece quando deslogado) -->
+        <div data-netlify-identity-menu></div>
+
+        <!-- Conteúdo protegido (só aparece logado) -->
+        <div id="conteudo-protegido" style="display: none; margin-top: 30px;">
+            <div class="alert alert-success">
+                ✅ Login efetuado! Bem-vindo, Dr. Cobucci.
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Relatórios Mensais</h5>
+                    <p class="card-text">Aqui você poderá acessar os relatórios de atendimento em breve.</p>
+                    <a href="#" class="btn btn-primary">Ver relatórios (em construção)</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Script do widget -->
+    <script src="https://cdn.jsdelivr.net/npm/netlify-identity-widget@1.9.2/build/netlify-identity-widget.js"></script>
+    <script>
+        if (window.netlifyIdentity) {
+            window.netlifyIdentity.init();
+        }
+
+        window.netlifyIdentity.on('init', user => {
+            if (user) {
+                document.getElementById('conteudo-protegido').style.display = 'block';
+            }
+        });
+
+        window.netlifyIdentity.on('login', user => {
+            document.getElementById('conteudo-protegido').style.display = 'block';
+            window.netlifyIdentity.close();
+        });
+
+        window.netlifyIdentity.on('logout', () => {
+            document.getElementById('conteudo-protegido').style.display = 'none';
+        });
+    </script>
+</body>
+  </html>
